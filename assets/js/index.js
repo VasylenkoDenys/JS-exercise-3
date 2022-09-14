@@ -7,27 +7,20 @@ function User (firstName, lastName, email, age, isLoggedIn) {
   this.isLoggedIn = isLoggedIn;
 };
 
-const getFullName = {
-  userName: function(){
-    console.log(`${this.firstName} ${this.lastName}`);
+const userProto = {
+  getFullName: function(){
+    return `${this.firstName} ${this.lastName}`;
+  },
+  logout: function(){
+    return this.isLoggedIn = false;
+  },
+  login: function(){
+    return this.isLoggedIn = true;
   }
 };
 
-const logout = {
-  changeLogOut: function(isLoggedIn){
-   return isLoggedIn === false;
-  }
-};
 
-const login = {
-  changeLogIn: function(isLoggedIn){
-    return isLoggedIn === true;
-  }
-};
-
-// User.prototype = getFullName;
-// User.prototype = logout;
-User.prototype = login;
+User.prototype = userProto;
 
 
 const user1 = new User ('Bohdan', 'Zaporojets', 'bohdanukr@gmail.com', 45, true);
